@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LinkedList {
 	private Node head;
@@ -93,6 +94,30 @@ public class LinkedList {
 				System.out.printf("%d occurs %d times\n", i, count[i]);
 			}
 		}
+
+	}
+	
+	public static HashMap<Integer, Integer> countOccurances1(int[] num) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		int[] count = new int[100];
+		int temp = 0;
+		int i;
+
+		for (i = 0; i < num.length; i++) {
+			temp = num[i];
+			count[temp]++;
+		}
+
+		for (i = 1; i < count.length; i++) {
+			
+			map.put(i, count[i]);
+			
+			if (map.get(i) == 0) {
+				map.remove(i);
+			}
+		}
+		
+		return map;
 
 	}
 }
